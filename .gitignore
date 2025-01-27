@@ -1,0 +1,50 @@
+# Ignore WordPress core files (avoid pushing WordPress installation files)
+!wp-content/
+wp-admin/
+wp-includes/
+
+# Ignore specific wp-content subfolders
+wp-content/upgrade/
+wp-content/uploads/
+wp-content/plugins/
+wp-content/themes/
+wp-content/languages/
+
+# Ignore sensitive WordPress configuration files
+wp-config.php
+
+# Ignore database-related files
+*.sql
+*.sql.gz
+*.tar.gz
+*.zip
+
+# Ignore Docker-related sensitive files
+.env
+docker-compose.override.yml
+
+# Ignore system or temporary files
+.DS_Store
+Thumbs.db
+*.log
+*.bak
+*.swp
+*.tmp
+*.pid
+
+# Ignore node_modules and dependencies (if used in your project)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Ignore files created by IDEs or editors
+.vscode/
+.idea/
+*.code-workspace
+
+# Ignore git metadata for submodules
+.gitmodules
+
+# Ignore volume-mounted folders
+mysql_data/
+wp-content/uploads/

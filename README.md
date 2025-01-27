@@ -61,3 +61,80 @@
 Implement security measures within your Docker environment.
 Keep your server software, plugins, and Docker images updated.
 Regularly review security logs.
+
+---
+# Before start:
+
+## How we manage the dependence and themes
+- php has `Composer` which the same as `npm` or `pip install`
+- it will read the `composer.json` file, then download those things to `vendor` folder
+- after that, it also move the package to the folder it should be
+
+## How we develop with those pre-build plugin
+- the idea is:
+  - keep thing with plug-in and themes as it-is, because every time we version up, any code change in those folder will be override
+  - so we has separated folder call `custom-plug-in` an `custom-theme`, install it to the wp itself.
+
+## Install `docker` `docker-compose`
+```cmd
+docker -v
+docker-compose --version
+```
+
+---
+# Run your local env
+
+## STEP 1:
+- make sure you have docker and docker-compose
+
+## STEP 2:
+- run 
+```
+docker-compose up -d
+```
+- in your terminal it should print out 
+```
+[+] Running 4/4
+ ✔ Network sample-woocommerce_default      Created                                                                                            0.1s 
+ ✔ Volume "sample-woocommerce_mysql_data"  Created                                                                                            0.0s 
+ ✔ Container sample-woocommerce-woo-db-1   Healthy                                                                                           10.9s 
+ ✔ Container sample-woocommerce-woo-web-1  Started                                                                                           11.0s 
+```
+- check docker image
+```
+docker ps
+```
+
+```
+CONTAINER ID   IMAGE                        COMMAND                  CREATED          STATUS                    PORTS                  NAMES
+ecf88587d882   sample-woocommerce-woo-web   "docker-entrypoint.s…"   22 minutes ago   Up 21 minutes             0.0.0.0:8080->80/tcp   sample-woocommerce-woo-web-1
+3d8a517f0ec2   mysql:5.7                    "docker-entrypoint.s…"   22 minutes ago   Up 22 minutes (healthy)   3306/tcp, 33060/tcp    sample-woocommerce-woo-db-1
+```
+
+## STEP 3:
+- access to wp in browser
+  - you might need to install wp if it's the first time you run the project
+```
+http://localhost:8080/
+```
+
+## STEP 4:
+- develop
+```
+TBD
+```
+
+## STEP 5:
+- stop dev
+```
+docker-compose down
+```
+- you will see in the terminal
+```
+[+] Running 3/3
+ ✔ Container sample-woocommerce-woo-web-1  Removed                                                                                                                1.2s 
+ ✔ Container sample-woocommerce-woo-db-1   Removed                                                                                                                1.6s 
+ ✔ Network sample-woocommerce_default      Removed  
+```
+- don't worry, the data will not lost
+  - database will be save in the volumes of docker

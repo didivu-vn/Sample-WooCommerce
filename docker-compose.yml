@@ -1,0 +1,30 @@
+version: "3.9"
+services:
+  woo-web:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./wp-content:/var/www/html/wp-content # Persist wp-content
+      - ./wp-config.php:/var/www/html/wp-config.php
+    depends_on:
+      woo-db:
+        condition: service_healthy
+
+  woo-db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: your_db_password
+      MYSQL_DATABASE: your_db_name
+      MYSQL_USER: your_db_user
+      MYSQL_PASSWORD: your_db_password
+    volumes:
+      - mysql_data:/var/lib/mysql # Persist database data
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  mysql_data:
