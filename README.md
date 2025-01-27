@@ -81,6 +81,9 @@ docker -v
 docker-compose --version
 ```
 
+## Set up your `wp-config.php`
+- just copy and rename `wp-config-sample.php` into `wp-config.php`
+
 ---
 # Run your local env
 
