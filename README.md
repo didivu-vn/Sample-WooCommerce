@@ -81,6 +81,12 @@ docker -v
 docker-compose --version
 ```
 
+# Install `php` and `composer`
+```cmd
+php -v
+composer -V
+```
+
 ## Set up your `wp-config.php`
 - just copy and rename `wp-config-sample.php` into `wp-config.php`
 
@@ -89,6 +95,17 @@ docker-compose --version
 
 ## STEP 1:
 - make sure you have docker and docker-compose
+- make sure you have php and composer
+
+- install plug-in and themes to local `vendor` (auto move to `wp-contents/plugins`)
+```
+composer install
+```
+
+- build your docker image
+```
+docker-compose build
+```
 
 ## STEP 2:
 - run 

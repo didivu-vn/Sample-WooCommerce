@@ -9,6 +9,7 @@ wp-content/uploads/
 wp-content/plugins/
 wp-content/themes/
 wp-content/languages/
+vendor/
 
 # Ignore sensitive WordPress configuration files
 wp-config.php
